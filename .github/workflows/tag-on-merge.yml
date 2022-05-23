@@ -1,21 +1,22 @@
-name: Tag on merge
+name: Tag on PR merge
 on:
-  push:
+  pull_request:
     branches:
       - main
+    types: [closed]
+
 jobs:
   tag-on-merge:
+    if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: "0"
-      - name: Is variable exported?
-        run: |
-          echo "ref: ${{ github.ref }} ref_name: ${{ github.ref_name }}"
-      - name: Tag on merge into main
+      - name: Tag on PR merge into main
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           custom_tag: ${{ github.ref_name }}
+          tag_prefix: ""
