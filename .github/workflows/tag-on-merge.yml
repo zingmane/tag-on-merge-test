@@ -13,6 +13,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO_OWNER: zingmane
-          WITH_V: true
           CUSTOM_TAG: ${{ env.GITHUB_REF }}
           VERBOSE: true
