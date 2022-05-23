@@ -18,7 +18,7 @@ jobs:
           echo "ref: ${{ github.ref }}"
           echo "ref_name: ${{ github.ref_name }}"
           echo "ref_name: ${{ github.event.pull_request.ref }}"
-          echo "ref_name: ${{ github.event.pull_request.ref_name }}"
+          echo "ref_name: ${{ toJSON(github.event) }}"
 
       - name: Tag on PR merge into main
         id: tag_version
