@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Tag on merge into master
-        uses: anothrNick/github-tag-action@master
+      - name: Tag on merge into main
+        uses: anothrNick/github-tag-action@1.36.0.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO_OWNER: zingmane
