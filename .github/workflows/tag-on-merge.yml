@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  build:
+  tag-on-merge:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -13,5 +13,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO_OWNER: zingmane
-          CUSTOM_TAG: ${{ env.GITHUB_REF }}
+          WITH_V: false
+          CUSTOM_TAG: ${{ env.GITHUB_REF_NAME }}
           VERBOSE: true
