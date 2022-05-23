@@ -13,10 +13,17 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: "0"
+      - name: variables
+        run: |
+          echo "ref: ${{ github.ref }}"
+          echo "ref_name: ${{ github.ref_name }}"
+          echo "ref_name: ${{ github.event.pull_request.ref }}"
+          echo "ref_name: ${{ github.event.pull_request.ref_name }}"
+
       - name: Tag on PR merge into main
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          custom_tag: ${{ github.ref_name }}
+          custom_tag: ${{ github.event.pull_request.ref_name }}
           tag_prefix: ""
